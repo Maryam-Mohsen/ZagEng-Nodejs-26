@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>1. Students Management</h3>
+    <input type="text" id="stdName" placeholder="Name">
+    <input type="number" id="stdAge" placeholder="Age">
+    <input type="number" id="stdGrade" placeholder="Grade">
+    <button onclick="addStudent()">Add Student</button>
+    <ul id="stdUl"></ul>
+
+    <hr>
+
+    <h3>2. Todo List</h3>
+    <input type="text" id="taskInput" placeholder="Task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="todoUl"></ul>
+
+    <hr>
+
+    <h3>3. Image Gallery</h3>  
+    <img id="galleryImg" src="img\img1.jpg" width="200">
+    <br>
+    <button onclick="prevImage()">Previous</button>
+    <button onclick="nextImage()">Next</button>
+    <button onclick="resetImage()">Reset</button>
+
+    <hr>
+
+    <h3>4. Live Search</h3>
+    <input type="text" id="searchInput" oninput="liveSearch()" placeholder="Search...">
+    <p id="noResults" style="display:none">No results found</p>
+    <ul id="productsUl"></ul>
+
+    <script src="1.js"></script>
+    <script src="2.js"></script>
+    <script src="3.js"></script>
+    <script src="4.js"></script>
+</body>
+</html>

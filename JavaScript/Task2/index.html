@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="mainBtn">Start Test</button>
+
+    <script>
+        let currentProblem = 1;
+        function showResult(msg) {
+            document.getElementById('result').innerText = "Problem " + (currentProblem - 1) + ": " + msg;
+        }
+
+        document.getElementById('mainBtn').onclick = function() {
+            if (currentProblem > 35) {
+                alert("All problems completed");
+                return;
+            }
+            let script = document.createElement('script');
+            script.src = currentProblem + ".js";
+            document.body.appendChild(script);
+            this.innerText = "Next Problem";
+            if (currentProblem <= 35) {
+                    this.innerText = "Next (Problem " + currentProblem + ")";
+                } else {
+                    this.innerText = "Finish";
+                }
+            currentProblem++;
+        };
+    </script>
+</body>
+</html>
