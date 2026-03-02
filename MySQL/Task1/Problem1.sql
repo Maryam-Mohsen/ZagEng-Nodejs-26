@@ -27,3 +27,5 @@ SELECT * FROM students WHERE grade > 85;
 UPDATE students SET grade = 95 WHERE name = 'Omar Samir'; 
 SELECT * FROM students WHERE city = 'Cairo'; 
 
+DROP DATABASE school_db;
+SHOW DATABASES;

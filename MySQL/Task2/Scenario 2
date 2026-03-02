@@ -1,0 +1,61 @@
+CREATE DATABASE IF NOT EXISTS HospitalDB;
+USE HospitalDB;
+
+CREATE TABLE doctors (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    specialization VARCHAR(50),
+    hire_date DATE,
+    salary DECIMAL(10, 2),
+    consultations_count INT
+);
+
+CREATE TABLE patients (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    gender CHAR(1),
+    admission_date DATE,
+    room_type VARCHAR(50),
+    bill_amount DECIMAL(10, 2),
+    status VARCHAR(20)
+);
+
+INSERT INTO doctors VALUES 
+(1, 'Dr. Ahmed', 'Cardiology', '2023-05-10', 12000, 150),
+(2, 'Dr. Mona', 'Neurology', '2021-11-20', 15000, 200),
+(3, 'Dr. Sara', 'Cardiology', '2024-01-15', 11000, 50),
+(4, 'Dr. Khaled', 'Pediatrics', '2022-08-30', 9000, 120);
+
+INSERT INTO patients VALUES 
+(1, 'Ali Mohamed', 45, 'M', '2026-02-10', 'ICU', 7000.00, 'admitted'),
+(2, 'Hoda Mansour', 30, 'F', '2026-02-20', 'Private', 3000.00, 'discharged'),
+(3, 'Sayed Omar', 60, 'M', '2026-01-05', 'ICU', 4500.00, 'admitted'),
+(4, 'Mona Ahmed', 25, 'F', '2026-02-25', 'General', 1500.00, 'admitted');
+
+--Task 1
+SELECT name, specialization, salary FROM doctors 
+WHERE hire_date > '2022-01-01' 
+ORDER BY salary DESC LIMIT 5;
+
+--Task 2
+SELECT room_type, 
+    COUNT(*) AS patient_count, 
+    MAX(bill_amount) AS max_bill, 
+    MIN(bill_amount) AS min_bill, 
+    SUM(bill_amount) AS total_revenue
+FROM patients 
+GROUP BY room_type 
+HAVING SUM(bill_amount) > 5000;
+
+--Task 3
+SELECT name, LENGTH(name) AS name_length FROM patients;
+SELECT LOWER(specialization) FROM doctors;
+SELECT name, DATEDIFF(CURDATE(), admission_date) AS days_in_hospital FROM patients;
+
+--Task 4
+ALTER TABLE doctors ADD COLUMN email VARCHAR(100);
+UPDATE doctors SET salary = salary * 1.10 WHERE specialization = 'Cardiology';
+DELETE FROM patients WHERE status = 'discharged';
+ALTER TABLE patients MODIFY COLUMN bill_amount DECIMAL(10, 2);
+
